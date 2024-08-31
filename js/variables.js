@@ -44,13 +44,14 @@ select.innerHTML = options;
 ingresar(datosPropiedad);
 ingresar(datosUbicacion);
 
-//creo un input con sus respectivos argumentos para ingresar los datos de metro2
+//creo un input con sus respectivos atributos para ingresar los datos de metro2
 
 let input = document.createElement("input")
 input.id = "metros2"
 input.type = "number"; //los atributos de la etiqueta HTML se escriben con un punto
 input.max = 400;
 input.min = 20;
+//lo meto en el body
 body = document.body.appendChild(input)
 console.log(document);
 
@@ -59,6 +60,7 @@ console.log(document);
 let boton = document.createElement("button");
 boton.id = "enviar";
 boton.innerText = "Cotizar"
+//lo meto en el body
 body = document.body.appendChild(boton);
 
 
@@ -68,8 +70,11 @@ function recolectar (array){
     //guardo dentro de una variable el valor que toma el select
     let seleccionado = document.getElementById("seleccion");
         if (seleccionado.value !==""){
+            //recorro el array
             for (const propiedad of array) {
+                //si algun dato coincide
                 if(seleccionado.value === propiedad.tipo){
+                    //de vuelve el valor de propiedad.factor
                     return propiedad.factor            
                 }
             }
@@ -85,12 +90,14 @@ var costom2 = 1.16;
 
 //cuando hago clik en el boton cotizar
 let clik = document.getElementById("enviar");
+//le doy una instruccion al evento onclick
 clik.onclick = function(){
 //calculo la poliza
 let poliza = ((fmPropiedad)*(fmUbicacion)*(metros2.value)*costom2);
 let suPoliza = poliza.toFixed(2)
+//muestro los valores
 console.log("El costo aproximado de su poliza es:  $ " + suPoliza);
-
+//creo un h2 para mostrar el resultado
 let mostrar = document.createElement("h2");
 mostrar.innerText = ( `El valor de su poliza es:  $ ${suPoliza}` );
 body = document.body.appendChild(mostrar);
